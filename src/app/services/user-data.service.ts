@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserDataService {
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  getUserData() {
+    return this.http.get('http://ergast.com/api/f1/2022/drivers');
+    // .subscribe((res) => {
+    //   debugger;
+    //   // return res;
+    // });
+  }
 }
