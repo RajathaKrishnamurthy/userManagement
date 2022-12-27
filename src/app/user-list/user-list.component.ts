@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDataService } from './../services/user-data.service';
+import { AddEditUserComponent } from '../add-edit-user/add-edit-user.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -9,14 +11,16 @@ import { UserDataService } from './../services/user-data.service';
  * @title Styling columns using their auto-generated column names
  */
 export class UserListComponent implements OnInit {
-  constructor(private userService: UserDataService) {
+  constructor(private userService: UserDataService, private dialog: MatDialog) {
     // userService = userService
   }
 
   ngOnInit(): void {
-    let data = this.userService.getUserData().subscribe((res) => { 
-      });
-
+    let data = this.userService.getUserData();
+    // debugger;
+  }
+  openDialogUser() {
+    this.dialog.open(AddEditUserComponent);
   }
   displayedColumns: string[] = [
     'demo-position',
@@ -30,18 +34,18 @@ export class UserListComponent implements OnInit {
 
 export interface PeriodicElement {
   name: string;
-  position: number;
-  weight: string;
-  symbol: string;
+  id: number;
+  username: string;
+  role: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 44, name: 'Lewis Hamilton', weight: 'L.Hamilton', symbol: 'H' },
+  { id: 44, name: 'Lewis Hamilton', username: 'L.Hamilton', role: 'admin' },
   {
-    position: 33,
+    id: 33,
     name: 'Max Verstappen',
-    weight: 'M.Verstappen',
-    symbol: 'He',
+    username: 'M.Verstappen',
+    role: 'admin',
   },
   // { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
   // { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },

@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
@@ -22,9 +23,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AddEditUserComponent } from './add-edit-user/add-edit-user.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, UserListComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    UserListComponent,
+    AddEditUserComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,6 +50,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatSelectModule,
     MatOptionModule,
     HttpClientModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
